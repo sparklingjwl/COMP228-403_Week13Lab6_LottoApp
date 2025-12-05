@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file defines what the application looks like (its appearance) -->
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- 
+    The main layout is a vertical box (VBox) that stacks everything from top to bottom.
+    Everything is centered and has spacing between elements.
+    The 'fx:controller' tells JavaFX which Java class handles button clicks (LottoController).
+-->
+<VBox spacing="15" alignment="CENTER" 
+      xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.LottoController">
+    
+    <!-- Adds some space around the edges of the window -->
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <!-- The title label at the top -->
+    <Label text="Quick Pick Lotto" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    
+    <!-- A horizontal row for the three input fields -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Minimum Number:"/>
+        <TextField fx:id="minField" text="1" prefWidth="60"/>
+        
+        <Label text="Maximum Number:"/>
+        <TextField fx:id="maxField" text="100" prefWidth="60"/>
+        
+        <Label text="Quantity of Balls:"/>
+        <TextField fx:id="ballsField" text="6" prefWidth="60"/>
+    </HBox>
+    
+    <!-- The first button: generates a single set of numbers -->
+    <Button text="Generate Lotto Numbers" onAction="#handleGenerate" 
+            prefWidth="200" prefHeight="35"/>
+    
+    <!-- The label that shows the result of a single draw -->
+    <Label fx:id="resultLabel" style="-fx-font-size: 16px; -fx-text-fill: blue;"
+           wrapText="true"/>
+    
+    <!-- The second button: runs 5 threads to generate numbers simultaneously -->
+    <Button text="Generate 5 Runs with Threads" onAction="#handleThreads" 
+            prefWidth="200" prefHeight="35"
+            style="-fx-background-color: green; -fx-text-fill: white;"/>
+    
+    <!-- The large text area that shows the output from all 5 threads -->
+    <TextArea fx:id="threadOutput" prefWidth="450" prefHeight="150" 
+              editable="false" wrapText="true"/>
+</VBox>
